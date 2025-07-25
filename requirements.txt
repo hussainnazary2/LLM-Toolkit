@@ -25,10 +25,10 @@ psutil>=5.9.0  # System monitoring (memory usage, etc.)
 # Model Loading Dependencies
 llama-cpp-python>=0.2.0  # Python bindings for llama.cpp
 ctransformers>=0.2.0  # CTransformers for GGUF model support
-# transformers>=4.30.0  # Hugging Face transformers library (commented out)
-# huggingface_hub>=0.16.0  # Hugging Face Hub client (commented out)
-# safetensors>=0.3.0  # Safe tensor format support (commented out)
-# accelerate>=0.20.0  # Model acceleration and device management (commented out)
+# transformers>=4.30.0  # Hugging Face transformers library (commented out - not needed for ctransformers)
+# huggingface_hub>=0.16.0  # Hugging Face Hub client (commented out - not needed for ctransformers)
+# safetensors>=0.3.0  # Safe tensor format support (commented out - only needed for transformers backend)
+# accelerate>=0.20.0  # Model acceleration and device management (commented out - not needed for ctransformers)
 
 # GPU Dependencies (optional)
 # Install with: pip install llama-cpp-python[cuda] for CUDA support
