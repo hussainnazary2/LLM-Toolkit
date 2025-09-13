@@ -29,7 +29,7 @@ A universal desktop application for loading, managing, and interacting with AI m
 
 1. Clone this repository:
    ```
-   git clone https://github.com/yourusername/llm-toolkit.git
+   git clone https://github.com/hussainnazary2/LLM-Toolkit.git
    cd llm-toolkit
    ```
 
