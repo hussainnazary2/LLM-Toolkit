@@ -91,6 +91,32 @@ After activating the virtual environment, run the application:
 python main.py
 ```
 
+### Quick Start for Judges
+
+To quickly evaluate this project:
+
+1. **Clone and setup:**
+   ```bash
+   git clone <repository-url>
+   cd llm-toolkit
+   ```
+
+2. **Windows users:**
+   ```cmd
+   setup_env.bat
+   venv\Scripts\activate
+   python main.py
+   ```
+
+3. **macOS/Linux users:**
+   ```bash
+   ./setup_env.sh
+   source venv/bin/activate
+   python main.py
+   ```
+
+The application will launch with a GUI interface for loading and managing AI models. All dependencies are automatically installed during setup.
+
 ## Development
 
 ### Project Structure
@@ -126,6 +152,36 @@ Addons must implement the interfaces defined in the `interfaces` directory. See 
 ## License
 
 [MIT License](LICENSE)
+
+## Development with Kiro
+
+This project was developed with significant assistance from Kiro, an AI-powered development assistant. Kiro helped with:
+
+### Architecture & Design
+- **Modular Architecture**: Kiro assisted in designing the clean separation between backends, UI components, and core logic
+- **Interface Design**: Created the abstraction interfaces in the `interfaces/` directory for pluggable backends
+- **Format Detection System**: Designed the intelligent model format detection and routing system
+
+### Code Generation & Implementation
+- **Backend Implementations**: Generated backend adapters for different model formats (GGUF, safetensors, PyTorch, Hugging Face)
+- **UI Components**: Created PySide6 UI components with proper error handling and user feedback
+- **Service Layer**: Implemented model loading, caching, and management services
+- **Utility Functions**: Generated helper functions for file handling, error management, and hardware detection
+
+### Testing & Quality Assurance
+- **Test Suite**: Created comprehensive unit tests, integration tests, and performance tests
+- **Error Handling**: Implemented robust error handling with actionable user messages
+- **Documentation**: Generated API documentation, user guides, and troubleshooting guides
+
+### Development Workflow
+The `.kiro/` directory contains specs and development artifacts that demonstrate the AI-assisted development process, including requirements gathering, design decisions, and implementation planning.
+
+### Key AI Contributions
+- Automatic GPU detection and acceleration setup scripts
+- Cross-platform compatibility handling (Windows, macOS, Linux)
+- Memory optimization for large model loading
+- Comprehensive error reporting and user guidance
+- Modular addon system architecture
 
 ## Contributing
 
