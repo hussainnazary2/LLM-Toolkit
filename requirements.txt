@@ -1,0 +1,53 @@
+# UI Dependencies
+PySide6>=6.4.0  # Qt for Python - UI framework
+
+# Testing Dependencies
+pytest>=7.0.0  # Testing framework
+pytest-qt>=4.0.0  # Qt testing utilities
+pytest-cov>=4.1.0  # Test coverage reporting
+pytest-xvfb>=3.0.0  # Virtual display for headless UI testing
+pytest-timeout>=2.1.0  # Test timeout handling
+pytest-mock>=3.10.0  # Enhanced mocking utilities
+pytest-benchmark>=4.0.0  # Performance benchmarking
+pytest-html>=3.1.0  # HTML test reports
+pytest-json-report>=1.5.0  # JSON test reports
+pytest-parallel>=0.1.1  # Parallel test execution
+
+# Utility Dependencies
+pyyaml>=6.0  # YAML parsing for configuration
+jsonschema>=4.17.3  # JSON schema validation
+appdirs>=1.4.4  # Platform-specific directory paths
+networkx>=3.0  # Graph algorithms for addon dependency resolution
+
+# Performance Dependencies
+psutil>=5.9.0  # System monitoring (memory usage, etc.)
+
+# Model Loading Dependencies
+llama-cpp-python>=0.2.0  # Python bindings for llama.cpp
+ctransformers>=0.2.0  # CTransformers for GGUF model support
+# transformers>=4.30.0  # Hugging Face transformers library (commented out - not needed for ctransformers)
+# huggingface_hub>=0.16.0  # Hugging Face Hub client (commented out - not needed for ctransformers)
+# safetensors>=0.3.0  # Safe tensor format support (commented out - only needed for transformers backend)
+# accelerate>=0.20.0  # Model acceleration and device management (commented out - not needed for ctransformers)
+
+# GPU Dependencies (optional)
+# Install with: pip install llama-cpp-python[cuda] for CUDA support
+# Install with: pip install pyopencl for OpenCL support
+# Install with: pip install pynvml for NVIDIA GPU monitoring
+pynvml>=11.4.1  # NVIDIA GPU monitoring (optional)
+
+# Document Processing Dependencies
+PyPDF2>=3.0.0  # PDF text extraction
+pdfplumber>=0.11.0  # Advanced PDF text extraction with better formatting
+python-docx>=0.8.11  # Word document processing
+
+# Google API Dependencies
+google-auth>=2.17.0  # Google authentication library
+google-auth-oauthlib>=1.0.0  # OAuth 2.0 flow for Google APIs
+google-api-python-client>=2.88.0  # Google API client library
+
+# Development Dependencies
+black>=23.1.0  # Code formatting
+isort>=5.12.0  # Import sorting
+flake8>=6.0.0  # Linting
+mypy>=1.0.0  # Type checking
