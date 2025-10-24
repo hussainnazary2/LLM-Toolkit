@@ -155,33 +155,102 @@ Addons must implement the interfaces defined in the `interfaces` directory. See 
 
 ## Development with Kiro
 
-This project was developed with significant assistance from Kiro, an AI-powered development assistant. Kiro helped with:
+This project was developed with significant assistance from Kiro, an AI-powered development assistant. Kiro was instrumental in accelerating development, maintaining code quality, and implementing complex features across the entire stack.
 
 ### Architecture & Design
-- **Modular Architecture**: Kiro assisted in designing the clean separation between backends, UI components, and core logic
-- **Interface Design**: Created the abstraction interfaces in the `interfaces/` directory for pluggable backends
-- **Format Detection System**: Designed the intelligent model format detection and routing system
+- **Modular Architecture**: Kiro designed the clean separation between backends (`app/backends/`), UI components (`app/ui/`), and core logic (`app/core/`)
+  - Example: Created the `BackendInterface` abstraction that allows seamless switching between llama-cpp-python, transformers, and other backends
+  - Designed the plugin system in `app/addons/` with drag-and-drop installation support
+  
+- **Interface Design**: Generated all abstraction interfaces in the `interfaces/` directory
+  - `IBackend`: Unified interface for all model backends
+  - `IModelLoader`: Standard interface for loading different model formats
+  - `IAddon`: Plugin interface for extensibility
+  
+- **Format Detection System**: Implemented intelligent model format detection in `app/core/format_detector.py`
+  - Automatic identification of GGUF, safetensors, PyTorch bin, and Hugging Face models
+  - Smart routing to appropriate backends based on file signatures and metadata
 
 ### Code Generation & Implementation
-- **Backend Implementations**: Generated backend adapters for different model formats (GGUF, safetensors, PyTorch, Hugging Face)
-- **UI Components**: Created PySide6 UI components with proper error handling and user feedback
-- **Service Layer**: Implemented model loading, caching, and management services
-- **Utility Functions**: Generated helper functions for file handling, error management, and hardware detection
+
+#### Backend Implementations
+- **`app/backends/llama_backend.py`**: Complete GGUF model support with llama-cpp-python integration
+- **`app/backends/transformers_backend.py`**: Hugging Face transformers backend with automatic device mapping
+- **`app/backends/safetensors_backend.py`**: Native safetensors format support
+- **`app/backends/pytorch_backend.py`**: PyTorch bin file loading and inference
+
+#### UI Components
+- **`app/ui/main_window.py`**: Main application window with model management interface
+- **`app/ui/model_info_widget.py`**: Detailed model information display supporting all formats
+- **`app/ui/addon_manager.py`**: Drag-and-drop addon installation interface
+- **Theme System**: Custom theming support with dark/light mode switching
+
+#### Service Layer
+- **`app/services/model_loader.py`**: Unified model loading service with format detection and backend routing
+- **`app/services/huggingface_service.py`**: Direct Hugging Face Hub integration with caching
+- **`app/services/hardware_detector.py`**: Automatic GPU detection (CUDA, Metal, ROCm, Vulkan)
+
+#### Cross-Platform Setup Scripts
+- **`setup_env.bat` / `setup_env.sh`**: Automated virtual environment setup for Windows/Unix
+- **`setup_gpu.bat` / `setup_gpu.sh`**: Intelligent GPU acceleration installation
+  - Detects NVIDIA (CUDA), AMD (ROCm), Apple (Metal), or Intel (Vulkan)
+  - Installs appropriate PyTorch and acceleration libraries
+  - Handles driver version compatibility
 
 ### Testing & Quality Assurance
-- **Test Suite**: Created comprehensive unit tests, integration tests, and performance tests
-- **Error Handling**: Implemented robust error handling with actionable user messages
-- **Documentation**: Generated API documentation, user guides, and troubleshooting guides
+- **`tests/test_format_detection.py`**: Comprehensive format detection tests
+- **`tests/test_backends.py`**: Backend integration tests for all supported formats
+- **`tests/test_model_loading.py`**: End-to-end model loading tests
+- **`run_tests.py`**: Unified test runner with coverage reporting
+- **Error Handling**: Implemented user-friendly error messages with actionable solutions throughout the application
 
-### Development Workflow
-The `.kiro/` directory contains specs and development artifacts that demonstrate the AI-assisted development process, including requirements gathering, design decisions, and implementation planning.
+### Development Workflow & Kiro Features Used
 
-### Key AI Contributions
-- Automatic GPU detection and acceleration setup scripts
-- Cross-platform compatibility handling (Windows, macOS, Linux)
-- Memory optimization for large model loading
-- Comprehensive error reporting and user guidance
-- Modular addon system architecture
+#### Specs (`.kiro/specs/`)
+Used Kiro's spec system to plan and implement major features:
+- Model format detection specification
+- Backend architecture design
+- Addon system requirements
+- GPU acceleration implementation plan
+
+#### File Context
+Leveraged Kiro's `#File` and `#Folder` context features to:
+- Maintain consistency across related files
+- Refactor code while preserving interfaces
+- Update multiple backend implementations simultaneously
+
+#### Diagnostics & Debugging
+- Used Kiro's diagnostic tools to catch type errors, linting issues, and import problems
+- Iteratively fixed cross-platform compatibility issues
+- Optimized memory usage for large model loading
+
+### Concrete Examples of Kiro's Impact
+
+1. **Hardware Detection Logic**: Kiro generated the complete GPU detection system that automatically identifies and configures CUDA, Metal, ROCm, or Vulkan acceleration based on available hardware
+
+2. **Format Detection Algorithm**: Implemented sophisticated file signature checking and metadata parsing to accurately identify model formats without user input
+
+3. **Error Recovery**: Created comprehensive error handling that provides users with specific, actionable error messages (e.g., "CUDA not available. Install CUDA 11.8+ drivers or run in CPU mode")
+
+4. **Cross-Platform Scripts**: Generated both Windows batch files and Unix shell scripts with identical functionality, handling path differences and platform-specific commands
+
+5. **Memory Optimization**: Implemented lazy loading and memory-mapped file access for handling models larger than available RAM
+
+### Time Savings & Productivity
+- **Rapid Prototyping**: Initial working prototype completed in hours instead of days
+- **Multi-Format Support**: Adding each new model format (GGUF, safetensors, PyTorch) took minutes with Kiro's assistance
+- **Cross-Platform Testing**: Kiro helped identify and fix platform-specific issues without requiring multiple test machines
+- **Documentation**: Generated comprehensive README, API docs, and inline code comments automatically
+
+### Development Philosophy
+This project demonstrates how AI-assisted development with Kiro enables:
+- Faster iteration on complex features
+- Consistent code quality and architecture
+- Comprehensive error handling and user experience
+- Rapid cross-platform compatibility
+- Maintainable, well-documented codebases
+
+The `.kiro/` directory contains specs and development artifacts that showcase the AI-assisted development process, including requirements gathering, design decisions, and implementation planning.
 
 ## Contributing
 
